@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import './SignUpForm.css';
 
+const titles = ["Mr", "Mrs", "Miss", "Ms", "Dr", "Professor", "Master", "Sir", "Madam", 
+"Lady", "Lord", "King", "Queen", "Prince", "Princess", "Baron", "Baroness", "Count", "Countess", "Duchess", "Emperor", "Empress", 
+"Captain", "Commander", "Admiral", "Colonel", "General", "Vice President", "President", "Mayor", 
+"Mother", "Father", "Ambassador", "Messenger", "Savior", "Other..."];
+const suffixes = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", 
+"XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "Jr", "Sr", 
+"of Light", "of Darkness", "from Heaven", "from Hell", "from The Void", "from another World", "Other..."];
+const races = ["Black", "White", "Yellow", "Brown", "Red", "Purple", "Green", "Blue", "Pink", "Orange", "Cyan", 
+"Human", "Beastman", "Dwarf", "Orc", "Ogre", "Goblin", "Troll", "Undead", 
+"Night Elf", "Dark Elf", "Blood Elf", "Wood Elf", "High Elf", "Khajiit", "Argonian", "Vampire", "Grot", "Angel", "Demon", "Other..."];
+const sexes = ["Female", "Male", "Intersex", "Trans Female", "Trans Male", "Genderqueer", "She-male", "He-female", "Non-binary", "Universal", "Other..."];
+
 function SignUpForm({ onSignUp }) {
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
