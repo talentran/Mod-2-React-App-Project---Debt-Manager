@@ -4,6 +4,7 @@ import Button from "./components/Button";
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import "./App.css";
+import { renderResultAmount } from "./helpers/renderResultAmount";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -15,12 +16,39 @@ function App() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [history, setHistory] = useState([]);
+
+  // const obj = {
+  //   from: 'Tri',
+  //   to: 'Vitalii',
+  //   amount: -500,
+  //   date: Date.now()
+  // }
+
+  useEffect(() => {
+    fetch('http://worldtimeapi.org/api/timezone/PST8PDT').then((res) => res).then((r) => r.json()).then((d) => console.log(d))
+  }, [])
+
   const onLoanClick = () => {
     setLoanedAmount((prevLoanedAmount) => prevLoanedAmount + amount);
+
+    const transaction = {
+      from: userName,
+      to: friendName,
+      amount: amount
+    }
+    setHistory([...history, transaction])
+
   };
 
   const onBorrowClick = () => {
     setBorrowedAmount((prevBorrowedAmount) => prevBorrowedAmount + amount);
+    const transaction = {
+      from: userName,
+      to: friendName,
+      amount: amount
+    }
+    setHistory([...history, transaction])
   };
 
   const result = loanedAmount - borrowedAmount;
@@ -35,21 +63,11 @@ function App() {
     }
   }, [result]);
 
-  const renderResult = () => {
-    if (result > 0) {
-      return <p className="green-text">${result}</p>;
-    } else if (result < 0) {
-      return <p className="red-text">${result}</p>;
-    } else {
-      return <p className="neutral-text">${result}</p>;
-    }
-  };
-
   const handleLogin = (userID, password) => {
-    if (users[userID] === password) {
+    if (userID === 'Tri' && password === 'password') {
       setIsLoggedIn(true);
     } else {
-      alert('Invalid login credentials');
+      alert('Sorry, in this version only Tri is allowed to login');
     }
   };
 
@@ -66,14 +84,10 @@ function App() {
     if (isSignUp) {
       return <SignUpForm onSignUp={handleSignUp} />;
     } else {
-      return (
-        <>
-          <LoginForm onLogin={handleLogin} />
-          <button onClick={() => setIsSignUp(true)}>Sign Up</button>
-        </>
-      );
+      return <LoginForm onLogin={handleLogin} onSignUpClick={() => setIsSignUp(true)} />;
     }
   }
+  
 
   return (
     <div className="App">
@@ -104,7 +118,14 @@ function App() {
         color="red"
         onClick={onBorrowClick}
       />
-      {renderResult()}
+      {renderResultAmount(result)}
+      {history.map((item, index) => (
+        <div key={index} style={{border: '1px solid black', marginTop: 10}}>
+          <p>From: {item.from}</p>
+          <p>To: {item.to}</p>
+          <p>Amount: {item.amount}</p>
+        </div>
+      ))}
     </div>
   );
 }

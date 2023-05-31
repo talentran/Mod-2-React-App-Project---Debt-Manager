@@ -1,0 +1,60 @@
+.loginForm {
+    width: 500px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.loginForm h1,
+.loginForm h2 {
+    text-align: center;
+    color: #333;
+}
+
+.loginForm label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.loginForm input[type='text'],
+.loginForm input[type='password'] {
+    width: 95%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-btn {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bffb3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-btn:hover {
+    background-color: #007bff;
+    font-weight: bold;
+}
+
+.signup-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+  
+.signup-btn:hover {
+    opacity: 0.8;
+    font-weight: bold;
+}
