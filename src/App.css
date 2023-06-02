@@ -1,3 +1,61 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  font-weight: bold;
+}
+
+.App p {
+  margin-bottom: 20px;
+}
+
+.App input {
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 200px;
+  background-color: #ffffff;
+  border: 2px solid #ffcc00;
+  color: black;
+  font-weight: bold;
+}
+
+.App select {
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 225px;
+  height: 35px;
+  background-color: #ffffff;
+  border: 1px solid #ffcc00;
+  color: black;
+  font-weight: bold;
+}
+
+.App button {
+  padding: 10px 20px;
+  margin: 10px;
+  width: 300px;
+  height: 50px;
+  border: none;
+  /* color: #ffd700; */
+  /* background-color: #333; */
+  font-size: 20px;
+}
+
+.App button.green {
+  background-color: #228b22;
+}
+
+.App button.red {
+  background-color: #b22222;
+}
+
+
 .green-btn {
   background-color: green;
   font-size: 20px;
@@ -21,7 +79,7 @@
 }
 
 .green-text {
-  color: green;
+  color: lime;
   font-size: 28px;
 }
 
@@ -31,6 +89,6 @@
 }
 
 .neutral-text {
-  color: orange;
+  color: yellow;
   font-size: 28px;
 }
