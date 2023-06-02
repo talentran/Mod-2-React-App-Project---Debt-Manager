@@ -1,85 +1,54 @@
-import React, { useState, useEffect } from "react";
-import Input from "./components/Input";
-import Button from "./components/Button";
+import React, { useEffect, useState } from "react";
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
+import LoanBorrowApp from './components/LoanBorrowApp';
+import GoogleIn from './components/GoogleLogin';
+import GoogleOut from './components/GoogleLogout';
+import { gapi } from 'gapi-script';
 import "./App.css";
-import { renderResultAmount } from "./helpers/renderResultAmount";
 
 function App() {
-  const [userName] = useState("Tri");
-  const [friendName, setFriendName] = useState("");
-  const [amount, setAmount] = useState(0);
-
-  const [loanedAmount, setLoanedAmount] = useState(0);
-  const [borrowedAmount, setBorrowedAmount] = useState(0);
-
+  const [user, setUser] = useState({});
   const [users, setUsers] = useState({});
-  const [currency, setCurrency] = useState("USD");
-  const [partnerLocation, setPartnerLocation] = useState("");
-
-  const [isSignUp, setIsSignUp] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
-  const [receipts, setReceipts] = useState([]);
+  // useEffect(() => {
+  //   console.log(user)
+  // }, [user])
 
+  console.log(gapi)
+
+
+  
   useEffect(() => {
-    fetch('http://worldtimeapi.org/api/timezone/PST8PDT').then((res) => res).then((r) => r.json()).then((d) => console.log(d))
-  }, [])
-
-  const onLoanClick = () => {
-    const newLoanedAmount = loanedAmount + amount;
-    setLoanedAmount(newLoanedAmount);
-
-    const transaction = {
-      from: userName,
-      to: friendName,
-      amount: amount,
-      currency: currency,
-      location: "USA",
-      time: new Date().toLocaleString()
+    const clientId = `${process.env.REACT_APP_YOUR_CLIENT_ID}.apps.googleusercontent.com`;
+    const start = () => {
+      gapi.client.init({
+        client_Id: clientId,
+        scope: ""
+      })
     };
-
-    const newReceipt = `Receipt: User ${transaction.from} in ${transaction.location} has lent ${transaction.amount} ${transaction.currency} to ${transaction.to} in ${partnerLocation} at ${transaction.time}. Total lent so far: ${newLoanedAmount} ${transaction.currency}`;
-    console.log(newReceipt);
-    setReceipts([...receipts, newReceipt]);
-  };
-
-  const onBorrowClick = () => {
-    const newBorrowedAmount = borrowedAmount + amount;
-    setBorrowedAmount(newBorrowedAmount);
-
-    const transaction = {
-      from: friendName,
-      to: userName,
-      amount: amount,
-      currency: currency,
-      location: partnerLocation,
-      time: new Date().toLocaleString()
-    };
-    
-    const receipt = `Receipt: ${transaction.from} at ${transaction.location} lent ${transaction.amount} ${transaction.currency} to ${transaction.to} in USA on ${transaction.time}. Total borrowed so far: ${newBorrowedAmount} ${transaction.currency}`;
-    setReceipts(prevReceipts => [...prevReceipts, receipt]);
-  };
-
-  const result = loanedAmount - borrowedAmount;
-
-  useEffect(() => {
-    if (result > 0) {
-      setLoanedAmount(result);
-      setBorrowedAmount(0);
-    } else if (result < 0) {
-      setBorrowedAmount(Math.abs(result));
-      setLoanedAmount(0);
-    }
-  }, [result]);
+    gapi.load("client:auth2", start);
+  }, []);
 
   const handleLogin = (userID, password) => {
     if (userID === 'Tri' && password === 'admin') {
+      setUser({ name: userID });
       setIsLoggedIn(true);
     } else {
       alert('Sorry, in this version only Tri is allowed to login');
     }
+  };
+
+  const handleGoogleLogin = (googleUser) => {
+    setUser(googleUser);
+    setIsLoggedIn(true);
+  };
+
+  const handleGoogleLogout = () => {
+    setUser(null);
+    setIsLoggedIn(false);
   };
 
   const handleSignUp = (userID, password) => {
@@ -96,62 +65,19 @@ function App() {
       return <SignUpForm onSignUp={handleSignUp} />;
     } else {
       return (
-          <LoginForm onLogin={handleLogin} onSignUpClick={() => setIsSignUp(true)} />
-      )
+        <>
+          <LoginForm onLogin={handleLogin} onSignUpClick={() => setIsSignUp(true)} onGoogleLogin={handleGoogleLogin} />
+          <GoogleIn user={user} setUser={setUser} onGoogleLogin={handleGoogleLogin} />
+        </>
+      );
     }
   }
-  
+
   return (
-    <div className="App">
-      <p>Please add your client or partner</p>
-      
-      <Input
-        placeholder="Name of your client or partner"
-        onChange={(e) => setFriendName(e.target.value)}
-      />
-
-      <select onChange={(e) => setCurrency(e.target.value)}>
-        <option value="USD">US Dollar (USD)</option>
-        <option value="VND">Vietnamese Dong (VND)</option>
-        <option value="RUB">Russian Ruble (RUB)</option>
-        <option value="INR">Indian Rupee (INR)</option>
-        <option value="GOLD">GOLD (1 oz)</option>
-      </select>
-
-      <Input
-        placeholder="Location of your client or partner"
-        onChange={(e) => setPartnerLocation(e.target.value)}
-      />
-
-      <Input  
-        placeholder="Amount"
-        type="number"
-        onChange={(e) => setAmount(Number(e.target.value))}
-      />
-
-      <Button
-        text={`Lend ${friendName} money`}
-        color="green"
-        onClick={onLoanClick}
-      />
-
-      <Button
-        text={`Borrow ${friendName} money`}
-        color="red"
-        onClick={onBorrowClick}
-      />
-
-      <p><u>Summary:</u></p>
-      <p>Partner: {friendName}</p>
-      <p>Money: ${amount}</p>
-      {renderResultAmount(result)}
-
-      {receipts.map((receipt, index) => (
-        <p key={index}>{receipt}</p>
-      ))}
-      {/* <History history={history} /> */}
-
-    </div>
+    <>
+      <LoanBorrowApp user={user} />
+      <GoogleOut setUser={setUser} onGoogleLogout={handleGoogleLogout} />
+    </>
   );
 }
 

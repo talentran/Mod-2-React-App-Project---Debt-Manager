@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FaGoogle, FaFacebookF, FaMicrosoft, FaAmazon, FaPaypal } from "react-icons/fa";
+import logo from '../debt-logo.png';
 import './LoginForm.css';
 
-const LoginForm = ({ onLogin, onSignUpClick }) => {
+const LoginForm = ({ onLogin, onSignUpClick, onGoogleLogin }) => {
   const [userID, setUserID] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,6 +14,7 @@ const LoginForm = ({ onLogin, onSignUpClick }) => {
 
   return (
     <div className="loginForm">
+        <img src={logo} alt="Debt-Logo" className="logo" />
       <h1>Welcome to Tri - Debt Management Application</h1>
       <h2>Your Debt Manager is greeting you!</h2>
       <form onSubmit={handleSubmit}>
@@ -37,7 +39,7 @@ const LoginForm = ({ onLogin, onSignUpClick }) => {
 
         <p>Or login with:</p>
 
-        <button className="social-login-btn google">
+        <button className="social-login-btn google" onClick={onGoogleLogin}>
             <FaGoogle />
             Log in with Google
         </button>

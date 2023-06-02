@@ -132,3 +132,13 @@
     text-decoration: underline;
 }
 
+.logo {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 50%;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
