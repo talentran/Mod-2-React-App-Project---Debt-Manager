@@ -3,7 +3,6 @@ import Input from "./Input";
 import Button from "./Button";
 import GoogleOut from './GoogleLogout';
 import Folder from "./Folder";
-import CurrencyConverter from "./CurrencyConverter";
 import { conversion } from "../helpers/conversion";
 import { loginContext } from "../context/loginContext";
 
