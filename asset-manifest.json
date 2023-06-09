@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Mod-2-React-App-Project---Debt-Manager/static/css/main.7cbfedc0.css",
+    "main.js": "/Mod-2-React-App-Project---Debt-Manager/static/js/main.ffb90cc5.js",
+    "static/media/debt-logo.png": "/Mod-2-React-App-Project---Debt-Manager/static/media/debt-logo.306ea4e9e3b6a75b0b04.png",
+    "index.html": "/Mod-2-React-App-Project---Debt-Manager/index.html",
+    "main.7cbfedc0.css.map": "/Mod-2-React-App-Project---Debt-Manager/static/css/main.7cbfedc0.css.map",
+    "main.ffb90cc5.js.map": "/Mod-2-React-App-Project---Debt-Manager/static/js/main.ffb90cc5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7cbfedc0.css",
+    "static/js/main.ffb90cc5.js"
+  ]
+}
