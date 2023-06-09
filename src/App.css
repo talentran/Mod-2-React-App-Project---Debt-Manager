@@ -92,3 +92,38 @@
   color: yellow;
   font-size: 28px;
 }
+
+.user-info {
+  float: left;
+  width: 30%;
+  padding: 1em;
+  border-right: 1px solid gray;
+}
+
+.user-info img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.social-logout-btn {
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 10px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.social-logout-btn.google {
+  background: #4285f4;
+}
+
+.social-logout-btn.google:hover {
+  background: #2b78e4;
+}

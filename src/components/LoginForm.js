@@ -1,22 +1,41 @@
-import React, { useState } from 'react';
-import { FaGoogle, FaFacebookF, FaMicrosoft, FaAmazon, FaPaypal } from "react-icons/fa";
+import React, { useContext, useState } from 'react';
+import { FaFacebookF, FaMicrosoft, FaAmazon, FaPaypal } from "react-icons/fa";
 import logo from '../debt-logo.png';
 import './LoginForm.css';
+import GoogleIn from './GoogleLogin';
+import { loginContext } from '../context/loginContext';
 
 const LoginForm = ({ onLogin, onSignUpClick, onGoogleLogin }) => {
   const [userID, setUserID] = useState('');
   const [password, setPassword] = useState('');
+
+  const { setUser, setIsLoggedIn } = useContext(loginContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onLogin(userID, password);
   };
 
+  const handleGoogleLogin = (googleUser) => {
+    setUser(googleUser);
+    setIsLoggedIn(true);
+  };
+
+  // For google logout
+  // const handleGoogleLogout = () => {
+  //   setUser(null);
+  //   setIsLoggedIn(false);
+  // };
+
   return (
     <div className="loginForm">
-        <img src={logo} alt="Debt-Logo" className="logo" />
+        <div className="logo-container">
+            <img src={logo} alt="Debt-Logo" className="logo" />
+        </div>
+
       <h1>Welcome to Tri - Debt Management Application</h1>
       <h2>Your Debt Manager is greeting you!</h2>
+
       <form onSubmit={handleSubmit}>
         <label>
           Your ID:
@@ -39,10 +58,7 @@ const LoginForm = ({ onLogin, onSignUpClick, onGoogleLogin }) => {
 
         <p>Or login with:</p>
 
-        <button className="social-login-btn google" onClick={onGoogleLogin}>
-            <FaGoogle />
-            Log in with Google
-        </button>
+        <GoogleIn onGoogleLogin={handleGoogleLogin} className='social-login-btn google heck_button'/>
 
         <button className="social-login-btn facebook">
             <FaFacebookF />

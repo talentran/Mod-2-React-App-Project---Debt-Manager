@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import LoanBorrowApp from './components/LoanBorrowApp';
-import GoogleIn from './components/GoogleLogin';
-import GoogleOut from './components/GoogleLogout';
+// import GoogleIn from './components/GoogleLogin';
 import { gapi } from 'gapi-script';
 import "./App.css";
+import { loginContext } from "./context/loginContext";
 
 function App() {
-  const [user, setUser] = useState({});
-  const [users, setUsers] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [user, setUser] = useState({});
+  // const [users, setUsers] = useState({});
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(user)
-  // }, [user])
+  const { setUsers, setUser, setIsLoggedIn, users, isLoggedIn, handleGoogleLogin } = useContext(loginContext);
 
-  console.log(gapi)
-
-
-  
   useEffect(() => {
     const clientId = `${process.env.REACT_APP_YOUR_CLIENT_ID}.apps.googleusercontent.com`;
     const start = () => {
@@ -41,15 +35,15 @@ function App() {
     }
   };
 
-  const handleGoogleLogin = (googleUser) => {
-    setUser(googleUser);
-    setIsLoggedIn(true);
-  };
+  // const handleGoogleLogin = (googleUser) => {
+  //   setUser(googleUser);
+  //   setIsLoggedIn(true);
+  // };
 
-  const handleGoogleLogout = () => {
-    setUser(null);
-    setIsLoggedIn(false);
-  };
+  // const handleGoogleLogout = () => {
+  //   setUser(null);
+  //   setIsLoggedIn(false);
+  // };
 
   const handleSignUp = (userID, password) => {
     if (users[userID]) {
@@ -67,7 +61,7 @@ function App() {
       return (
         <>
           <LoginForm onLogin={handleLogin} onSignUpClick={() => setIsSignUp(true)} onGoogleLogin={handleGoogleLogin} />
-          <GoogleIn user={user} setUser={setUser} onGoogleLogin={handleGoogleLogin} />
+          {/* <GoogleIn onGoogleLogin={handleGoogleLogin} /> */}
         </>
       );
     }
@@ -75,8 +69,7 @@ function App() {
 
   return (
     <>
-      <LoanBorrowApp user={user} />
-      <GoogleOut setUser={setUser} onGoogleLogout={handleGoogleLogout} />
+      <LoanBorrowApp />
     </>
   );
 }

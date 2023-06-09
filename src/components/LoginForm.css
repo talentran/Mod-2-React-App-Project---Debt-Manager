@@ -75,6 +75,13 @@
     opacity: 0.8; 
   }
 
+  .heck_button {
+    margin-left: 25px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 .google {
     background-color: #DB4437;
 }
@@ -133,10 +140,16 @@
 }
 
 .logo {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     margin: 20px;
     border-radius: 50%;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo:hover {
