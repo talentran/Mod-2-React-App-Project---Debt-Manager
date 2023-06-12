@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# LoanBorrowApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+LoanBorrowApp is a React application that allows users to track the amount they've loaned or borrowed in different currencies.
+The application will record the time, place, amount of money, and name of the person from whom the user has lent or borrowed.
+The application also allows users to enter currencies in other countries and can automatically convert to Dollars.
+The interface of the application will ask the user to enter the necessary information, then a summary table will be output. And finally will create a transaction receipt and store it in a specific folder.
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+- [React](https://reactjs.org/): A JavaScript library for building user interfaces.
+- [Google Login API](https://developers.google.com/identity/sign-in/web/sign-in): For user authentication.
+- Currency Exchange API: Used to convert different currencies to USD.
+- Use Context to pass data around.
+- Use Pass Props to pass data from parent components to child components, making data transfer, reuse, and communication between components efficient.
+- Use React map to store output information in arrays, organize information for user control.
+- Use new Date for continuous real-time updates.
 
-### `npm start`
+## Approach Taken
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Identified core functionalities and built them using React.
+2. Managed the state using React's built-in useState and useEffect hooks.
+3. Created reusable components like Button and Input.
+4. Integrated Google Login API for user authentication.
+5. Integrated a Currency Exchange API for converting currencies.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Live Site
 
-### `npm test`
+Check out the live site [here](https://talentran.github.io/Mod-2-React-App-Project---Debt-Manager/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation Instructions
 
-### `npm run build`
+1. Clone this repo
+2. Run `npm install` to install all dependencies
+3. Create a `.env` file in the root of the project and add your Google Login API keys and Currency Exchange API keys as shown in the `.env.example` file.
+4. Run `npm start` to start the local server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How To Use
+1. use Google Account to sign in. 
+2. In case you can't sign in with Google or don't have a Google account, use the following account to sign in:
+- ID: Tri
+- Password: admin
+2. In the application interface, please enter information such as the name of the person you want to lend or borrow.
+3. Select a currency.
+4. Enter the whereabouts of the person you lent or borrowed or where you and that person did the transaction.
+5. The amount you have lent or borrowed.
+6. If you use a currency other than USD, then "Approximate value in USD:" will help you automatically convert that amount to USD.
+7. There will be 2 options for you to choose, borrow or lend:
+- When you choose to lend your transaction will be stored in a green folder.
+- If you choose to borrow, your transaction will be stored in a red folder.
+9. Clicking on the folder will display your transaction history.
+10. Summary table to show you and your partner's trading status:
+- If the amount below is green, it means your partner owes you money.
+- If the amount below is red, it means you owe your partner money.
+- If the amount below is yellow $0 means no debt.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Unsolved Problems
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Currently the application cannot allow users to register.
+2. Currently, users can only log in with the creator's account (ID: Tri / Password: admin) or through Google Login.
+3. Currently, the application does not have a feature to delete transactions.
+4. The application currently only supports a few currencies.
+5. The trading algorithm is still flawed.
 
-### `npm run eject`
+## Future Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Add registration functionality to the app.
+2. Add login methods via Facebook, Microsoft, Amazon, PayPal.
+3. Add login "Remember me" function.
+4. Add functionality to delete transactions.
+5. Add support for more currencies.
+6. Add functionality to categorize transactions by type.
+7. Add payment integration or debt request functionality.
+8. Add the function of editing personal profiles for users.
+9. Move debt status to a separate area.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to fork this project and make your own changes. Pull requests for new features, bug fixes, and improvements are welcome.
+Have a nice day and enjoy!
