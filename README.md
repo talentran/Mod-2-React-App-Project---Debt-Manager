@@ -65,13 +65,17 @@ Check out the live site [here](https://talentran.github.io/Mod-2-React-App-Proje
 
 1. Add registration functionality to the app.
 2. Add login methods via Facebook, Microsoft, Amazon, PayPal.
-3. Add login "Remember me" function.
-4. Add functionality to delete transactions.
-5. Add support for more currencies.
-6. Add functionality to categorize transactions by type.
-7. Add payment integration or debt request functionality.
-8. Add the function of editing personal profiles for users.
-9. Move debt status to a separate area.
+3. Add the function of linking to a bank account.
+4. Add login "Remember me" function.
+5. Add functionality to delete transactions.
+6. Add support for more currencies.
+7. Add functionality to categorize transactions by type.
+8. Add payment integration or debt request functionality.
+9. Add the function to allow installments.
+10. Add the function of adding interest to repay the debt.
+11. Add the function to set a due date for debt repayment.
+12. Add the function of editing personal profiles for users.
+13. Move debt status to a separate area.
 
 ## Contributions
 
