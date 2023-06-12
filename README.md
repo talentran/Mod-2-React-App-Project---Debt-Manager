@@ -45,13 +45,13 @@ Check out the live site [here](https://talentran.github.io/Mod-2-React-App-Proje
 5. The amount you have lent or borrowed.
 6. If you use a currency other than USD, then "Approximate value in USD:" will help you automatically convert that amount to USD.
 7. There will be 2 options for you to choose, borrow or lend:
-- When you choose to lend your transaction will be stored in a green folder.
-- If you choose to borrow, your transaction will be stored in a red folder.
+- When you choose to lend your transaction will be stored in a <span style="color: green">Green Folder</span>.
+- If you choose to borrow, your transaction will be stored in a <span style="color: red">Red Folder</span>.
 9. Clicking on the folder will display your transaction history.
 10. Summary table to show you and your partner's trading status:
-- If the amount below is green, it means your partner owes you money.
-- If the amount below is red, it means you owe your partner money.
-- If the amount below is yellow $0 means no debt.
+- If the amount below is <span style="color: green">green</span>, it means your partner owes you money.
+- If the amount below is <span style="color: red">red</span>, it means you owe your partner money.
+- If the amount below is <span style="color: yellow">yellow $0</span> means no debt.
 
 ## Unsolved Problems
 
