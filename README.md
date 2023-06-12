@@ -1,6 +1,6 @@
-# LoanBorrowApp
+# Debt Manager
 
-LoanBorrowApp is a React application that allows users to track the amount they've loaned or borrowed in different currencies.
+Debt-Manager-App is a React application that allows users to track the amount they've loaned or borrowed in different currencies.
 The application will record the time, place, amount of money, and name of the person from whom the user has lent or borrowed.
 The application also allows users to enter currencies in other countries and can automatically convert to Dollars.
 The interface of the application will ask the user to enter the necessary information, then a summary table will be output. And finally will create a transaction receipt and store it in a specific folder.
